@@ -11,7 +11,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class DonorTest extends TestCase
 {
     use DatabaseMigrations;
-
     public function setUp():void
     {
         parent::setUp();
@@ -63,4 +62,5 @@ class DonorTest extends TestCase
              ->assertStatus(200);
         $this->assertDatabaseHas('users',['available'=>0,'id'=>1]);
     }
+
 }

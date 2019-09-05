@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getNearbyDonors($query, $lat, $lng, $radius=10)
+    public function scopeGetNearbyDonors($query, $lat, $lng, $radius=10)
     {
         $haversine = "(6371 * acos(cos(radians(" . $lat . "))
                     * cos(radians(`lat`))
@@ -45,11 +45,9 @@ class User extends Authenticatable
                     - radians(" . $lng . "))
                     + sin(radians(" . $lat . "))
                     * sin(radians(`lat`))))";
-
         return $query->select('id','name','phone','email')
                      ->selectRaw("{$haversine} AS distance")
                      ->whereRaw("{$haversine} < ?", [$radius]);
-
 
     }
 }

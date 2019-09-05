@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -20,8 +21,13 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'phone' => $faker->phoneNumber,
+        'available' => 1,
+        'blood_group' => "B+",
+        'lat' => -1.2680573,
+        'lng' => 36.80115,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'password' => Hash::make('123456'), // password
         'remember_token' => Str::random(10),
     ];
 });

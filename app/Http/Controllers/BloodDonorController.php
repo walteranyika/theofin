@@ -42,6 +42,7 @@ class BloodDonorController extends Controller
         $user = User::find($request->user_id);
         $user->lat = $request->lat;
         $user->lng = $request->lng;
+        $user->available=1;
         $user->save();
         return $this->responseData("Thanks for donating",true);
     }
@@ -82,5 +83,7 @@ class BloodDonorController extends Controller
     {
         return response()->json(["success" => $status, "message" => $message], 200);
     }
+
+
 
 }

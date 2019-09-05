@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('blood_group');
             $table->string('phone');
-            $table->double('lat',6,6)->default(0.00);
-            $table->double('lng',6,6)->default(0.00);
+            $table->double('lat')->default(0.00);
+            $table->double('lng')->default(0.00);
             $table->integer('available')->default(1);
             $table->rememberToken();
             $table->timestamps();

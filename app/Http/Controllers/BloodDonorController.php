@@ -52,7 +52,7 @@ class BloodDonorController extends Controller
         $validator = Validator::make($request->all(), [
             'lat' => 'required',
             'lng' => 'required',
-            'user_id'=>'required|exists:users,id',
+            'blood_group'=>'required',
         ]);
         $error = $validator->messages();
         if ($validator->fails()) {
@@ -60,7 +60,8 @@ class BloodDonorController extends Controller
         }
         $lat = $request->lat;
         $lng = $request->lng;
-        $users = User::getNearbyDonors($lat, $lng)->get();
+        $blood_group= $request->blood_group;
+        $users = User::where(['blood_group'=>$blood_group])->getNearbyDonors($lat, $lng)->get();
         return $this->responseData($users,true);
     }
 
@@ -83,7 +84,4 @@ class BloodDonorController extends Controller
     {
         return response()->json(["success" => $status, "message" => $message], 200);
     }
-
-
-
 }

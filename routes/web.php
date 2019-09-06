@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('donor/register/donor','BloodDonorController@register');
+Route::post('donor/donate/blood','BloodDonorController@donate');
+Route::post('donor/get/donors','BloodDonorController@getNearbyDonors');
+Route::post('donor/unavailable/donor','BloodDonorController@unavailable');

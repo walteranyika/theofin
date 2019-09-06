@@ -45,9 +45,10 @@ class User extends Authenticatable
                     - radians(" . $lng . "))
                     + sin(radians(" . $lat . "))
                     * sin(radians(`lat`))))";
-        return $query->select('id','name','phone','email')
+        return $query->select('id','name','phone','email','blood_group')
                      ->selectRaw("{$haversine} AS distance")
                      ->whereRaw("{$haversine} < ?", [$radius]);
 
+        //Updated All Apis
     }
 }

@@ -12,8 +12,8 @@ class BloodDonorController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'email' => 'required|unique:users,email',
+            'phone' => 'required|unique:users,phone',
             'blood_group' => 'required',
         ]);
         $error = $validator->messages();

@@ -17,8 +17,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+/**
+ * Mobile Routes
+ */
 Route::post('register/donor','BloodDonorController@register');
 Route::post('donate/blood','BloodDonorController@donate');
 Route::post('get/donors','BloodDonorController@getNearbyDonors');
 Route::post('unavailable/donor','BloodDonorController@unavailable');
+
+/**
+ * Music routes
+ */
+
+Route::post('add/music','MusicController@upload');
+Route::post('show/music','MusicController@list');
+
